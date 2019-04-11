@@ -37,6 +37,8 @@ type Place struct {
 
 func GetPlaces(w http.ResponseWriter, _ *http.Request) {
 	var data = generateData()
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 	err := json.NewEncoder(w).Encode(data)
 	if err != nil {
 		fmt.Print(err)
